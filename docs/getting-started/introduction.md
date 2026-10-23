@@ -77,7 +77,7 @@
 - គ្មាន automated tests ឬ CI
 - មានឯកសារខូច/មិនប្រើមួយចំនួន (`Scenes/monster.tscn` យោងរូបភាពដែលគ្មានក្នុង repo,
   `Script/target.gd` គ្មានអ្វីប្រើ, `Scenes/mai19EC.tmp` ជា temp file) —
-  មើល [troubleshooting](../troubleshooting.md)
+  មើល [ដោះស្រាយបញ្ហា](../troubleshooting.md)
 
 ---
 

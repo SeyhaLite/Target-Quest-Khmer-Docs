@@ -1,4 +1,4 @@
-# ស្គ្រីប និងអនុគមន៍ (API Reference)
+# ស្គ្រីប និងអនុគមន៍
 
 ឯកសារយោងនេះរាយបញ្ជី **អថេរ និងអនុគមន៍ពិតទាំងអស់** ក្នុងស្គ្រីបទាំង ៥
 នៃគម្រោង។ រាល់ព័ត៌មានផ្ទៀងផ្ទាត់ពីកូដនៅ commit `a10b33c`។
@@ -65,7 +65,7 @@
 | `release_arrow() -> void` | ១៩០–២៤២ | reparent ព្រួញទៅ current_scene; កំណត់ `direction`/`speed`/`is_stuck=false`; លេងសំឡេង+animation; `await` → idle |
 
 **ចំណាំ៖** `player.gd` មិនមាន `_ready()` ដែលហៅ `add_to_group("Player")` ទេ —
-មើល [troubleshooting](../troubleshooting.md)។
+មើល [ដោះស្រាយបញ្ហា](../troubleshooting.md)។
 
 ---
 
