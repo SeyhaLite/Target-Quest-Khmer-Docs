@@ -9,34 +9,103 @@
 
 ```mermaid
 flowchart TD
-    Main["Main (Node2D)<br/>📜 main.gd"]
-    PB["ParallaxBackground"]
-    Sky["SkyLayer → BackgroundSky (Sprite2D)"]
-    Mtn["MountainLayer → BackgroundMountain (Sprite2D)"]
-    Ground["StaticBody2D (ដី)"]
-    GS["GroundGrass (Sprite2D)"]
-    GC["CollisionShape2D — RectangleShape2D 1899×93"]
-    GA["GrassAudio (AudioStreamPlayer2D)"]
-    Player["Player (CharacterBody2D, scale 0.2)<br/>📜 player.gd"]
-    Body["Body → Torso → ដៃ/ជើង/ក្បាល (Sprite2D chain)"]
-    BHP["BowHoldPosition (Marker2D) → Bow (Sprite2D)"]
-    AP["AnimationPlayer (idle, shoot)"]
-    SA["ShootAudio (AudioStreamPlayer2D)"]
-    WB["StaticBody2D — វេទិកាឈើ (spawn ពេល runtime)"]
-    WBS["WoodenBase (Sprite2D) + CollisionShape2D 103×42 + BaseAudio"]
-    Egg["Egg (CharacterBody2D)<br/>📜 egg.gd — កូនរបស់វេទិកា (0, -50)"]
-    EggS["AnimatedSprite2D (damage: ៤ frames) + CapsuleShape2D + HitAudio"]
-    Arrow["Arrow (Area2D)<br/>📜 arrow.gd — spawn ពេល runtime"]
-    ArrowC["Sprite2D + CollisionPolygon2D + RayCast2D (145px)"]
-
-    Main --> PB --> Sky & Mtn
-    Main --> Ground --> GS & GC & GA
-    Main --> Player --> Body --> BHP
-    Player --> AP & SA
-    Main --> WB --> WBS
-    WB --> Egg --> EggS
-    Main --> Arrow --> ArrowC
+    MAIN["Main (Node2D) — main.gd"]:::dvroot
+    MAIN --> PB["ParallaxBackground"]
+    PB --> SKYL["SkyLayer (ParallaxLayer)"]
+    SKYL --> SKYS["BackgroundSky (Sprite2D)"]
+    PB --> MTNL["MountainLayer (ParallaxLayer)"]
+    MTNL --> MTNS["BackgroundMountain (Sprite2D)"]
+    MAIN --> GND["StaticBody2D — ដី"]
+    GND --> GG["GroundGrass (Sprite2D)"]
+    GND --> GC["CollisionShape2D — RectangleShape2D 1899×93"]
+    GND --> GA["GrassAudio (AudioStreamPlayer2D)"]
+    MAIN --> PL["Player (CharacterBody2D · scale 0.2) — player.gd<br/>instance នៃ player.tscn"]:::dvscene
+    PL --> BODY["Body (Node2D)"]
+    PL --> PLC["CollisionShape2D — CapsuleShape2D"]
+    PL --> ANIM["AnimationPlayer — idle · shoot"]
+    PL --> TLINE["TrajectoryLine (Line2D) — មិនប្រើក្នុងកូដ"]:::dvunused
+    PL --> SA["ShootAudio (AudioStreamPlayer2D)"]
+    BODY --> TORSO["Torso (Sprite2D)"]
+    BODY --> LUL["LeftUpperLegs (Sprite2D)"]
+    BODY --> RUL["RightUpperLeg (Sprite2D)"]
+    TORSO --> HEAD["Head (Sprite2D)"]
+    TORSO --> RUA["RightUperArm (Sprite2D)"]
+    TORSO --> LARM["LeftArm (Sprite2D)"]
+    RUA --> RLA["RightLowerArm (Sprite2D)"]
+    RLA --> RHAND["RightHand (Sprite2D)"]
+    RHAND --> BHP["BowHoldPosition (Marker2D)"]
+    BHP --> BOW["Bow (Sprite2D)"]
+    LARM --> LLA["LeftLowerArm (Sprite2D)"]
+    LLA --> LHAND["LeftHand (Sprite2D)"]
+    LUL --> LLL["LeftLowerLeg (Sprite2D)"]
+    LLL --> LSHOE["LeftShoe (Sprite2D)"]
+    RUL --> RLL["RightLowerLeg (Sprite2D)"]
+    RLL --> RSHOE["RightShoe (Sprite2D)"]
+    MAIN -. "spawn ពេល runtime — wooden_base_scene" .-> WB["StaticBody2D — វេទិកាឈើ"]:::dvrt
+    WB --> WBS["WoodenBase (Sprite2D)"]
+    WB --> WBC["CollisionShape2D — RectangleShape2D 103×42"]
+    WB --> WBA["BaseAudio (AudioStreamPlayer2D)"]
+    WB --> EGG["Egg (CharacterBody2D · offset 0,-50) — egg.gd"]:::dvrt
+    EGG --> EGAS["AnimatedSprite2D — damage 4 frames"]
+    EGG --> EGC["CollisionShape2D — CapsuleShape2D radius 46 height 138"]
+    EGG --> EHA["HitAudio (AudioStreamPlayer2D)"]
+    BHP -. "spawn ពេលទាញ — arrow_scene" .-> ARW["Arrow (Area2D) — arrow.gd<br/>reparent: ដៃ → Main → collider"]:::dvrt
+    ARW --> ARS["Sprite2D — រូបព្រួញ"]
+    ARW --> ARCP["CollisionPolygon2D"]
+    ARW --> ARR["RayCast2D — 145 px"]
+    classDef dvroot stroke-width:4px;
+    classDef dvscene stroke-width:2.5px;
+    classDef dvrt stroke-dasharray:6 4;
+    classDef dvunused stroke-dasharray:2 3;
 ```
+
+**ការអានដ្យាក្រាម៖** បន្ទាត់ស្តារក្បាស់ = ថ្នាំងជាប់គ្នាក្នុង scene ពិត ·
+បន្ទាត់ដាច់ៗ = ថ្នាំងដែលបង្កើត/spawn ពេល runtime · បន្ទាត់ដាច់ស្តើង = ថ្នាំងមានក្នុង scene
+ប៉ុន្តែកូដមិនប្រើ។ ដ្យាករាមនេះមាន toolbar ពង្រីក/បង្រួម/សម្រប/ពេញអេក្រង់ —
+ចុច «ពេញអេក្រង់» ដើម្បីពិនិត្យរចនាសម្ព័ន្ធទាំងមូល។
+
+<details>
+<summary>ការពិពណ៌នាជាអត្ថបទ (សម្រាប់ screen reader ឬការអានដោយគ្មានដ្យាក្រាម)</summary>
+
+```text
+Main (Node2D) — main.gd [main.tscn]
+├─ ParallaxBackground
+│  ├─ SkyLayer (ParallaxLayer) → BackgroundSky (Sprite2D)
+│  └─ MountainLayer (ParallaxLayer) → BackgroundMountain (Sprite2D)
+├─ StaticBody2D (ដី)
+│  ├─ GroundGrass (Sprite2D)
+│  ├─ CollisionShape2D (RectangleShape2D 1899×93)
+│  └─ GrassAudio (AudioStreamPlayer2D)
+├─ Player (CharacterBody2D, scale 0.2) — player.gd [instance player.tscn]
+│  ├─ Body (Node2D)
+│  │  ├─ Torso (Sprite2D)
+│  │  │  ├─ Head (Sprite2D)
+│  │  │  ├─ RightUperArm → RightLowerArm → RightHand
+│  │  │  │   └─ BowHoldPosition (Marker2D) → Bow (Sprite2D)
+│  │  │  └─ LeftArm → LeftLowerArm → LeftHand (Sprite2D)
+│  │  ├─ LeftUpperLegs → LeftLowerLeg → LeftShoe (Sprite2D)
+│  │  └─ RightUpperLeg → RightLowerLeg → RightShoe (Sprite2D)
+│  ├─ CollisionShape2D (CapsuleShape2D)
+│  ├─ AnimationPlayer (idle, shoot)
+│  ├─ TrajectoryLine (Line2D — មិនប្រើក្នុងកូដ)
+│  └─ ShootAudio (AudioStreamPlayer2D)
+├─ [runtime] StaticBody2D — វេទិកាឈើ (wooden_base_scene)
+│  ├─ WoodenBase (Sprite2D)
+│  ├─ CollisionShape2D (RectangleShape2D 103×42)
+│  ├─ BaseAudio (AudioStreamPlayer2D)
+│  └─ Egg (CharacterBody2D, offset 0,-50) — egg.gd
+│     ├─ AnimatedSprite2D (damage: 4 frames)
+│     ├─ CollisionShape2D (CapsuleShape2D radius 46, height 138)
+│     └─ HitAudio (AudioStreamPlayer2D)
+└─ [runtime] Arrow (Area2D) — arrow.gd
+   (កាន់នៅ BowHoldPosition ពេលទាញ → reparent ទៅ Main ពេលបាញ់
+    → ទៅ collider ពេលខ្ទប់)
+   ├─ Sprite2D (រូបព្រួញ)
+   ├─ CollisionPolygon2D
+   └─ RayCast2D (target_position 145,0)
+```
+
+</details>
 
 !!! note "អ្វីដែលមានតែពេល runtime"
     - **វេទិកាឈើ និងសុត** — `main.gd` instantiate ពួកវាតាមកម្រិត (`spawn_level_entities()`)
