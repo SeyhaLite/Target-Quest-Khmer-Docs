@@ -1,0 +1,7 @@
+# ឯកសារពឹងផ្អែកសម្រាប់ build ឯកសារ (Documentation build dependencies)
+# ខ្ទាស់ version ដើម្បីឱ្យ build អាចធ្វើឡើងវិញបាន (reproducible builds)។
+# ប្រភព version (ពិនិត្យថ្ងៃ 2026-10-23):
+# - https://pypi.org/project/mkdocs/          -> 1.6.1 (stable; 2.0 នៅ dev)
+# - https://pypi.org/project/mkdocs-material/ -> 9.7.7
+mkdocs==1.6.1
+mkdocs-material==9.7.7

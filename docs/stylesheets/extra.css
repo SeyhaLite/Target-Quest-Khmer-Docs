@@ -1,0 +1,58 @@
+/* ==========================================================================
+   extra.css — ការកែសម្រួលរចនាប័ទ្មសម្រាប់អក្សរខ្មែរ (Khmer typography)
+
+   គោលបំណង៖
+   1. បញ្ចូលពុម្ពអក្សរខ្មែរ (Kantumruy Pro + Noto Sans Khmer) ពី Google Fonts
+      ព្រោះពុម្ពអក្សរលំនាំដើមរបស់ Material (Roboto) គ្មានតួអក្សរខ្មែរ។
+   2. បង្កើន line-height ព្រោះអក្សរខ្មែរមានសញ្ញាខាងក្រោម/លើបន្ទាត់
+      ( subscript ដូចជា ្ ) ដែលត្រូវការកម្ពស់បន្ថែម។
+   3. ធ្វើឱ្យ code block និង Mermaid diagram បង្ហាញអក្សរខ្មែរបានត្រឹមត្រូវ។
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700&family=Noto+Sans+Khmer:wght@400;500;600;700&display=swap');
+
+:root {
+  --md-text-font-family: "Kantumruy Pro", "Noto Sans Khmer", "Khmer OS", sans-serif;
+  --md-code-font-family: "JetBrains Mono", "Noto Sans Khmer", "Kantumruy Pro", monospace;
+}
+
+/* អក្សរខ្មែរត្រូវការគម្លាតបន្ទាត់ធំជាងលំនាំដើម */
+.md-typeset {
+  line-height: 1.85;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+/* Code blocks ដែលមាន comment ជាភាសាខ្មែរ */
+.md-typeset code,
+.md-typeset pre {
+  line-height: 1.7;
+}
+
+/* តារាង — អក្សរខ្មែរក្នុងក្រឡាតូចៗ */
+.md-typeset table:not([class]) {
+  font-size: 0.72rem;
+}
+
+/* Mermaid diagram — ប្រើពុម្ពអក្សរខ្មែរសម្រាប់ស្លាក (labels) */
+.md-typeset .mermaid svg {
+  font-family: var(--md-text-font-family) !important;
+}
+
+.md-typeset .mermaid .nodeLabel,
+.md-typeset .mermaid .edgeLabel,
+.md-typeset .mermaid text {
+  font-family: var(--md-text-font-family) !important;
+}
+
+/* Admonition (ប្រអប់ព័ត៌មាន) — ចំណងជើងជាអក្សរខ្មែរ */
+.md-typeset .admonition-title,
+.md-typeset summary {
+  line-height: 1.6;
+}
