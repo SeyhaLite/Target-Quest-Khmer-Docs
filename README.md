@@ -17,6 +17,12 @@ Repository នេះគឺជា **fork មិនផ្លូវការ** ដ�
 > This repository is an independent, unofficial Khmer-language learning
 > resource. It is not endorsed by or affiliated with the original author.
 
+## រូបថតអេក្រង់ (Gameplay Screenshots)
+
+| យន្តការធ្នូ និងគន្លងព្រួញ | កម្រិតដែលមានវេទិកាឈើច្រើន |
+| :---: | :---: |
+| ![Gameplay 1 — bow mechanics](Image1.png) | ![Gameplay 2 — multi-platform puzzle](Image2.png) |
+
 ## គេហទំព័រឯកសារ (Documentation Website)
 
 📖 **អានឯកសារអនឡាញ៖ <https://target-quest-khmer-docs.readthedocs.io/>**
