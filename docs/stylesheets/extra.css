@@ -91,3 +91,85 @@ html .md-typeset summary {
 
 /* --- ការរក្សាទុកពណ៌ chip (kbd) របស់ Material — theme ដោះស្រាយ contrast រួច
    (ខុសពី sphinx_rtd_theme គ្មានបញ្ហា white chip នៅទីនេះ) --------------- */
+
+/* ==========================================================================
+   Mermaid diagram zoom (diagram-zoom.js) — ការពង្រីកដ្យាក្រាមពេញអេក្រង់
+   ========================================================================== */
+
+/* ដ្យាក្រាមធំជាងធុង → scroll ផ្តេកបាន (រក្សាទំហំអក្សរពិត) */
+html .md-typeset .mermaid.mz-scroll {
+  overflow-x: auto;
+  padding-bottom: 0.4rem;
+}
+
+/* សញ្ញាថាចុចបាន */
+html .md-typeset .mermaid.mz-clickable {
+  cursor: zoom-in;
+}
+
+/* Overlay ពេញអេក្រង់ — ប្រើ theme variables ដើម្បីស្របគ្នាទាំង light/dark */
+.mz-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--md-default-bg-color);
+}
+
+.mz-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 0.05rem solid var(--md-typeset-table-color);
+  flex: none;
+}
+
+.mz-toolbar button {
+  font: inherit;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.8rem;
+  cursor: pointer;
+  color: var(--md-typeset-color);
+  background: transparent;
+  border: 0.05rem solid var(--md-typeset-table-color);
+  border-radius: 0.15rem;
+  line-height: 1.6;
+}
+
+.mz-toolbar button:hover {
+  background-color: var(--md-accent-fg-color--transparent);
+}
+
+.mz-toolbar button:first-child {
+  margin-right: auto;
+}
+
+.mz-stage {
+  flex: 1 1 auto;
+  position: relative;
+  overflow: hidden;
+  touch-action: none;
+}
+
+.mz-stage svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  max-width: none !important;
+}
+
+.mz-hintwrap {
+  flex: none;
+  padding: 0.35rem 0.75rem;
+  text-align: center;
+  border-top: 0.05rem solid var(--md-typeset-table-color);
+}
+
+.mz-hint {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.72rem;
+  font-family: var(--md-text-font-family);
+}

@@ -88,6 +88,9 @@ plugins:
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - javascripts/diagram-zoom.js
+
 nav:
   - ទំព័រដើម: index.md
   - ចាប់ផ្តើម:
