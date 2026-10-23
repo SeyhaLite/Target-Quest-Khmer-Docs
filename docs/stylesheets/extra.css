@@ -157,14 +157,24 @@ html .dv-stage.dv-grabbing {
   cursor: grabbing;
 }
 
-html .dv-stage .mermaid {
+/* shadow host របស់ Material — transform លើ host មានឥទ្ធិពលលើ shadow content */
+html .dv-stage .mermaid.dv-host {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   margin: 0;
+  transform-origin: 0 0;
 }
 
-html .dv-stage .mermaid svg {
-  max-width: none !important;
+html .dv-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.78rem;
 }
 
 html .dv-hint {
