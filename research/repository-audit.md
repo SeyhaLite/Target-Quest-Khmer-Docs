@@ -203,6 +203,6 @@
 | --- | --- | --- | --- |
 | ១ | ឥរិយាបទ GUI ពិត (visual/audio feel) មិនបានសង្កេតផ្ទាល់ | ទាប — កូដច្បាស់លាស់ | អ្នកអានសាកល្បងផ្ទាល់; សម្គាល់ច្បាស់ក្នុងឯកសារ |
 | ២ | Material for MkDocs EOL 2026-11-05 | មធ្យម (រយៈពេលវែង) | pinned versions នៅតែដំណើរការលើ RTD; ROADMAP មានគម្រោងពិនិត្យ Zensical |
-| ៣ | RTD slug អាចខុសពី fallback `site_url` | ទាប | RTD ជំនួសដោយ `READTHEDOCS_CANONICAL_URL` ពេល build; CONTRIBUTING មានជំហានផ្ទៀងផ្ទាត់ |
+| ៣ | RTD slug អាចខុសពី fallback `site_url` | ✅ ដោះស្រាយហើយ | slug ពិត = `target-quest-khmer-docs` ត្រូវនឹង fallback; គេហទំព័រផ្សាយផ្ទាល់ ផ្ទៀងផ្ទាត់ 2026-10-23 |
 | ៤ | ការស្វែងរក (search) ជាអក្សរខ្មែរមានដែនកំណត់ (Khmer គ្មានដកឃ្លា — tokenizer ពិបាក) | មធ្យម | ពាក្យបច្ចេកទេសអង់គ្លេសនៅក្នុងមាតិកាជួយ search; អាចពិចារណា RTD server-side search នៅពេលអនាគត |
 | ៥ | upstream អាចផ្លាស់ប្តូរកូដ → លេខបន្ទាត់ក្នុងឯកសារខុស | មធ្យម | វិធីសាស្ត្រ sync ក្នុង CONTRIBUTING + commit SHA យោងក្នុងឯកសារនេះ |

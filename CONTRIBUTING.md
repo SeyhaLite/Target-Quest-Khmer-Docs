@@ -35,7 +35,7 @@ mkdocs build --strict
    បើមិនច្បាស់ សូមដាក់សម្គាល់ "មិនទាន់ផ្ទៀងផ្ទាត់"។
 5. **រូបភាព/ដ្យាក្រាម៖** ប្រើ Mermaid (ងាយថែទាំ)។ រូបភាពថ្មីត្រូវមាន
    license ច្បាស់លាស់ និងកត់ត្រាក្នុង asset index របស់
-   [docs/research/repository-audit.md](docs/research/repository-audit.md)។
+   [research/repository-audit.md](research/repository-audit.md)។
 6. **Link៖** ប្រើ relative link ក្នុង docs (ឧ. `[glossary](../glossary.md)`)។
    `mkdocs build --strict` នឹងចាប់យក link ខូចក្នុង nav។
 
@@ -126,7 +126,7 @@ git push origin main
 !!! warning "កុំបកប្រែដោយស្វ័យប្រវត្តិ"
     ពេល upstream ផ្លាស់ប្តូរកូដ កុំបកប្រែ/អាប់ដេតឯកសារខ្មែរដោយមិនបាន
     អានកូដថ្មីជាមុនសិន។ រាល់ការអាប់ដេតត្រូវផ្ទៀងផ្ទាត់ពីកូដពិត
-    ហើយអាប់ដេត commit SHA យោងក្នុង `docs/research/repository-audit.md`។
+    ហើយអាប់ដេត commit SHA យោងក្នុង `research/repository-audit.md`។
 
 ## សុវត្ថិភាព
 

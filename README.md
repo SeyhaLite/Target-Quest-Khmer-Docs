@@ -19,11 +19,9 @@ Repository នេះគឺជា **fork មិនផ្លូវការ** ដ�
 
 ## គេហទំព័រឯកសារ (Documentation Website)
 
-ឯកសារត្រូវបានរៀបចំសម្រាប់បង្ហោះលើ [Read the Docs](https://app.readthedocs.org/)។
+📖 **អានឯកសារអនឡាញ៖ <https://target-quest-khmer-docs.readthedocs.io/>**
 
-**ស្ថានភាព៖** រង់ចាំការ import ដោយម្ចាស់គណនី — ជំហានលម្អិតក្នុង
-[CONTRIBUTING.md](CONTRIBUTING.md) ផ្នែក "ការដាក់ពង្រាយលើ Read the Docs"។
-URL នឹងត្រូវបានបន្ថែមនៅទីនេះ **បន្ទាប់ពី** ការបង្ហោះត្រូវបានផ្ទៀងផ្ទាត់។
+បង្ហោះលើ [Read the Docs](https://app.readthedocs.org/) — ផ្ទៀងផ្ទាត់ដំណើរការជាក់ស្តែងថ្ងៃ 2026-10-23 (HTTP 200, build ស្វ័យប្រវត្តិរាល់ push ទៅ `main`)។
 
 ## មាតិកាសិក្សា (Learning Topics)
 
@@ -35,7 +33,7 @@ URL នឹងត្រូវបានបន្ថែមនៅទីនេះ **�
 - **ឯកសារយោង** — API ស្គ្រីបទាំងអស់, configuration, glossary ខ្មែរ⇄អង់គ្លេស
 
 ឯកសារទាំងអស់ផ្ទៀងផ្ទាត់ពីកូដពិតនៅ commit `a10b33c` (មើល
-[docs/research/repository-audit.md](docs/research/repository-audit.md))។
+[research/repository-audit.md](research/repository-audit.md))។
 
 ## ដំណើរការឯកសារក្នុងម៉ាស៊ីន (Local Docs Build)
 
