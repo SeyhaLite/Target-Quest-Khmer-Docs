@@ -89,7 +89,7 @@ extra_css:
   - stylesheets/extra.css
 
 extra_javascript:
-  - javascripts/diagram-zoom.js
+  - javascripts/diagram-viewer.js
 
 nav:
   - ទំព័រដើម: index.md
