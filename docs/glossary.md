@@ -17,7 +17,7 @@
 | សញ្ញា | Signal | យន្តការ event របស់ Godot (គម្រោងនេះប្រើតិចតួចណាស់) | godot-concepts |
 | ប្តូរមេ | Reparent | ផ្លាស់ node ពី parent មួយទៅមួយទៀត (`remove_child` + `add_child`) | arrow.gd |
 | ការផ្លាស់ប្តូរ | Transform | ទីតាំង + ការបង្វិល + មាត្រដ្ឋាន (`global_transform`) | arrow.gd |
-| លំនាំអក្សរ Z | Z-index | លំដាប់គូរ — លេខធំគូរលើលេខតូច | arrow.gd (−1) |
+| លំដាប់គូរ (Z) | Z-index | លំដាប់គូរ — លេខធំគូរលើលេខតូច | arrow.gd (−1) |
 
 ## រូបវិទ្យា និងគណិតវិទ្យា
 
@@ -29,10 +29,10 @@
 | វ៉ិចទ័រ | Vector | ទំហំ + ទិស (`Vector2(x, y)`) | គ្រប់ទីកន្លែង |
 | ធ្វើឱ្យមានប្រវែង ១ | Normalize | បំប្លែងវ៉ិចទ័រឱ្យប្រវែង ១ ដោយរក្សាទិស (`.normalized()`) | player.gd, arrow.gd |
 | គន្លងកាំភ្លើង/ព្រួញ | Projectile / trajectory | ផ្លូវកោងរបស់វត្ថុក្រោមទំនាញ | arrow.gd, player.gd |
-| អាំងតេក្រាលយឺលែរ | Euler integration | ការគណនាចលនាតាមជំហាន `v += a·dt; p += v·dt` | arrow.gd |
+| អាំងតេក្រាលអយលែរ | Euler integration | ការគណនាចលនាតាមជំហាន `v += a·dt; p += v·dt` | arrow.gd |
 | ការប៉ះទង្គិច | Collision | ការបុកគ្នារវាងវត្ថុ | រូបវិទ្យាទាំងអស់ |
 | រស្មីពិនិត្យ | RayCast | បន្ទាត់ត្រង់ស្វែងរកការប៉ះមុនគេ (`RayCast2D`, ១៤៥ px) | arrow.gd |
-| កាំជ្រោងផ្លាស់ប្តូរ | Delta (delta time) | រយៈពេលរវាង frame ពីរ (វិនាទី) | `_process(delta)` |
+| ចន្លោះពេលរវាងហ្វ្រេម | Delta (delta time) | រយៈពេលរវាង frame ពីរ (វិនាទី) | `_process(delta)` |
 
 ## ការបង្កើតកម្រិត
 
@@ -61,7 +61,7 @@
 | ការខ្ទប់ | Stick / embed | ព្រួញជាប់ក្នុងវត្ថុដែលបុក | arrow.gd `stick_arrow()` |
 | ការខូចខាត | Damage | ការបាត់បង់សុខភាព (`take_damage()`) | egg.gd |
 | កម្រិត | Level | ដំណាក់កាលនៃហ្គេម (`current_level`) | main.gd |
-| ត្រីមាស | Slingshot | យន្តការបាញ់ផ្ទុយទិសទាញ | player.gd |
+| យន្តការទាញបាញ់ | Slingshot | យន្តការបាញ់ផ្ទុយទិសទាញ | player.gd |
 
 ## ការអភិវឌ្ឍ និង Git/GitHub
 
@@ -90,7 +90,7 @@
 | UI | User Interface | ចំណុចប្រទាក់អ្នកប្រើ |
 | RTD | Read the Docs | សេវាកម្មបង្ហោះឯកសារ |
 | FOSS | Free and Open Source Software | កម្មវិធីកូដបើកទូលាយ |
-| PR | Pull Request | សំណើទាញ |
+| PR | Pull Request | សំណើបញ្ចូល |
 
 !!! tip "ចំណាំអំពីការបកប្រែ"
     ឈ្មោះកូដទាំងអស់ (`spawn_new_round`, `take_damage`, `max_hits`...) ប្រភេទ node

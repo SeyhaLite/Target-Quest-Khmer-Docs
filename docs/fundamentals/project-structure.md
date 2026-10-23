@@ -120,7 +120,7 @@ renderer/rendering_method.mobile="gl_compatibility"
 ### ១. `Scenes/monster.tscn` — scene ខូច
 
 ឯកសារនេះយោងរូបភាព ១១ ក្នុង `Free_Asset_Pack/NPC/` (Torso, Head, ដៃ ជើង...)
-ប៉ុន្តែ **ថត `NPC/` មិនមានក្នុង repository** ទេ (ផ្ទៀងផ្ទាត់៖ `ls Free_Asset_Pack/`
+ប៉ុន្តែ**ថត `NPC/` មិនមានក្នុង repository ទេ** (ផ្ទៀងផ្ទាត់៖ `ls Free_Asset_Pack/`
 បង្ហាញតែ `Characters`, `Environment`, `Props`, `SFX`, `Bow.png`, `arrow.png`)។
 បើអ្នកបើក scene នេះក្នុង editor វានឹងបង្ហាញកំហុស missing resource។
 វាក៏មិនត្រូវបាន instance ដោយ scene/script ណាដែរ (`grep monster` គ្មានលទ្ធផល)។
