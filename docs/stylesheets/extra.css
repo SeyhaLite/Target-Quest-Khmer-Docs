@@ -1,14 +1,24 @@
 /* ==========================================================================
-   extra.css — ការកែសម្រួលរចនាប័ទ្មសម្រាប់អក្សរខ្មែរ (Khmer typography)
+   extra.css — ការកែសម្រួលរចនាប័ទ្មតែមួយគត់ (single override stylesheet)
+   គោលបំណង៖ ភាពអានបានសម្រាប់អក្សរខ្មែរ + contrast ស្របគ្នាទាំង light/dark
 
-   គោលបំណង៖
-   1. បញ្ចូលពុម្ពអក្សរខ្មែរ (Kantumruy Pro + Noto Sans Khmer) ពី Google Fonts
-      ព្រោះពុម្ពអក្សរលំនាំដើមរបស់ Material (Roboto) គ្មានតួអក្សរខ្មែរ។
-   2. បង្កើន line-height ព្រោះអក្សរខ្មែរមានសញ្ញាខាងក្រោម/លើបន្ទាត់
-      ( subscript ដូចជា ្ ) ដែលត្រូវការកម្ពស់បន្ថែម។
-   3. ធ្វើឱ្យ code block និង Mermaid diagram បង្ហាញអក្សរខ្មែរបានត្រឹមត្រូវ។
+   វិធីសាស្ត្រ (តាមគោលការណ៍ UI audit):
+   - ឯកសារនេះផ្ទុកតែ overrides — បន្ទុកក្រោយ theme CSS តាម extra_css
+   - selector មាន prefix `html` ដើម្បី specificity ខ្ពស់ជាង theme លំនាំដើម
+   - គ្មាន !important លើកលែងកន្លែងដែល Material ប្រើ inline/high-specificity
+   - ពណ៌ទាំងអស់ប្រើ theme variables ឬ rgba scheme-agnostic → មិនបំផ្លាញ
+     contrast របស់ palette (default/slate) ដែល Material រចនាមក ≥ 4.5:1 ស្រាប់
+
+   បញ្ហាដែលបានកែ (audit 2026-10-23 លើ Material 9.7.7 defaults):
+   1. body font .8rem តូចពេកសម្រាប់អក្សរខ្មែរ (តួអក្សរមានជើង/សញ្ញាត្រួត)
+   2. table font .64rem (លំនាំដើម) / .72rem (កំណែចាស់) — អានពិបាក
+   3. line-height 1.6 កាត់សញ្ញាខាងក្រោមអក្សរខ្មែរ (coeng ្, សញ្ញា ឹ ូ)
+   4. តារាងធំៗពិបាកតាមដានជួរដេក → បន្ថែម striping រំលេចស្រាល
+   5. code blocks មាន comment ខ្មែរ → line-height + font fallback
+   6. Mermaid labels មិនប្រើពុម្ពខ្មែរ → ជួសជុល font-family
    ========================================================================== */
 
+/* --- ពុម្ពអក្សរខ្មែរ (Material គ្មាន `km` ក្នុងបញ្ជីភាសា theme) ---------- */
 @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700&family=Noto+Sans+Khmer:wght@400;500;600;700&display=swap');
 
 :root {
@@ -16,43 +26,68 @@
   --md-code-font-family: "JetBrains Mono", "Noto Sans Khmer", "Kantumruy Pro", monospace;
 }
 
-/* អក្សរខ្មែរត្រូវការគម្លាតបន្ទាត់ធំជាងលំនាំដើម */
-.md-typeset {
+/* --- 1. អត្ថបទមូលដ្ឋាន: ពង្រីកពី .8rem និងគម្លាតបន្ទាត់សម្រាប់អក្សរខ្មែរ --- */
+html .md-typeset {
+  font-size: 0.84rem;
   line-height: 1.85;
 }
 
-.md-typeset h1,
-.md-typeset h2,
-.md-typeset h3,
-.md-typeset h4 {
+html .md-typeset h1,
+html .md-typeset h2,
+html .md-typeset h3,
+html .md-typeset h4 {
   line-height: 1.5;
   font-weight: 700;
 }
 
-/* Code blocks ដែលមាន comment ជាភាសាខ្មែរ */
-.md-typeset code,
-.md-typeset pre {
-  line-height: 1.7;
+/* --- 2+3. តារាង: អក្សរធំគ្រប់គ្រាន់ + គម្លាតបន្ទាត់ក្នុងក្រឡា ------------- */
+html .md-typeset table:not([class]) {
+  font-size: 0.78rem;
 }
 
-/* តារាង — អក្សរខ្មែរក្នុងក្រឡាតូចៗ */
-.md-typeset table:not([class]) {
+html .md-typeset table:not([class]) th,
+html .md-typeset table:not([class]) td {
+  line-height: 1.75;
+}
+
+/* --- 4. តារាង striping ស្រាល (scheme-aware ដោយ rgba មិនប៉ះ contrast) ---- */
+html .md-typeset table:not([class]) tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+html [data-md-color-scheme="slate"] .md-typeset table:not([class]) tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* --- 5. Code: គម្លាតបន្ទាត់សម្រាប់ comment ខ្មែរ + កុំកាត់ជើងអក្សរ --------- */
+html .md-typeset code {
+  line-height: 1.75;
+}
+
+html .md-typeset pre {
+  line-height: 1.75;
+}
+
+html .md-typeset pre code {
   font-size: 0.72rem;
 }
 
-/* Mermaid diagram — ប្រើពុម្ពអក្សរខ្មែរសម្រាប់ស្លាក (labels) */
-.md-typeset .mermaid svg {
+/* --- 6. Mermaid: ពុម្ពខ្មែរសម្រាប់ស្លាក (Material ដាក់ !important លើ svg) -- */
+html .md-typeset .mermaid svg {
   font-family: var(--md-text-font-family) !important;
 }
 
-.md-typeset .mermaid .nodeLabel,
-.md-typeset .mermaid .edgeLabel,
-.md-typeset .mermaid text {
+html .md-typeset .mermaid .nodeLabel,
+html .md-typeset .mermaid .edgeLabel,
+html .md-typeset .mermaid text {
   font-family: var(--md-text-font-family) !important;
 }
 
-/* Admonition (ប្រអប់ព័ត៌មាន) — ចំណងជើងជាអក្សរខ្មែរ */
-.md-typeset .admonition-title,
-.md-typeset summary {
+/* --- Admonitions + details: ចំណងជើងខ្មែរមិនកាត់សញ្ញា --- */
+html .md-typeset .admonition-title,
+html .md-typeset summary {
   line-height: 1.6;
 }
+
+/* --- ការរក្សាទុកពណ៌ chip (kbd) របស់ Material — theme ដោះស្រាយ contrast រួច
+   (ខុសពី sphinx_rtd_theme គ្មានបញ្ហា white chip នៅទីនេះ) --------------- */
