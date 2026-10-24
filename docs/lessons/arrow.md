@@ -9,7 +9,7 @@
 
 ## Scene structure របស់ព្រួញ (`arrow.tscn`)
 
-```
+```text
 Arrow (Area2D)              ← z_index = 1, ភ្ជាប់ arrow.gd
 ├── Arrow (Sprite2D)        ← រូបភាព arrow.png នៅ offset (-242, -2.1)
 ├── CollisionPolygon2D      ← polygon រាងព្រួញ (សម្រាប់ឱ្យ egg ប៉ះតាម move_and_slide)
@@ -86,7 +86,7 @@ func _process(delta: float) -> void:
         # ចំណុចប៉ះជាក់ស្តែង (global coordinates)
         var hit_point = ray_cast.get_collision_point()
 
-        # បើ collider មាន take_damage() (គឺសុត) → បង្កការខូចខាត
+        # បើ collider មាន take_damage() (គឺស៊ុត) → បង្កការខូចខាត
         if collider and collider.has_method("take_damage"):
             collider.take_damage(self)
 
@@ -98,8 +98,10 @@ func _process(delta: float) -> void:
 
 នេះគឺជា **projectile motion** គណនាតាមវិធី Euler យ៉ាងសាមញ្ញ៖
 
-$$v_y(t+\Delta t) = v_y(t) + g \cdot \Delta t$$
-$$p(t+\Delta t) = p(t) + v(t+\Delta t) \cdot \Delta t$$
+```text
+v_y(t + Δt) = v_y(t) + g·Δt
+p(t + Δt) = p(t) + v(t + Δt)·Δt
+```
 
 ដែល `g = 980 px/s²` (ទំនាញលំនាំដើម Godot — គម្រោងមិនកែ)។
 
@@ -141,7 +143,7 @@ func stick_arrow(hit_point: Vector2, collider: Node) -> void:
         elif collider.has_node("GrassAudio"):
             collider.get_node("GrassAudio").play()     # ដីស្មៅ → Grass.wav
         elif collider.has_node("HitAudio"):
-            collider.get_node("HitAudio").play()       # សុត → Egg_Hit.wav
+            collider.get_node("HitAudio").play()       # ស៊ុត → Egg_Hit.wav
 
         # ★ ចំណុចសំខាន់បំផុត: reparent ទៅ collider
         var global_trans = global_transform  # រក្សាទីតាំង/បង្វិលពិភពលោក
@@ -160,9 +162,9 @@ func stick_arrow(hit_point: Vector2, collider: Node) -> void:
 - មិនត្រូវការកូដបន្ថែមដើម្បីតាមដានទីតាំងទេ
 - `global_transform` ត្រូវបានរក្សា ដូច្នេះមិនមានការលោតភ្លែត
 
-!!! note "ផលវិបាក: ព្រួញជាប់សុត នឹងធ្លាក់តាមសុត"
-    សុតគឺជា `CharacterBody2D` ដែលធ្លាក់ចុះតាមទំនាញបើគ្មានវេទិកា។
-    ព្រួញដែលខ្ទប់នឹងសុត ក៏ធ្លាក់តាមដែរ (ព្រោះវាជាកូន)។ ឯព្រួញដែលខ្ទប់
+!!! note "ផលវិបាក: ព្រួញជាប់ស៊ុត នឹងធ្លាក់តាមស៊ុត"
+    ស៊ុតគឺជា `CharacterBody2D` ដែលធ្លាក់ចុះតាមទំនាញបើគ្មានវេទិកា។
+    ព្រួញដែលខ្ទប់នឹងស៊ុត ក៏ធ្លាក់តាមដែរ (ព្រោះវាជាកូន)។ ឯព្រួញដែលខ្ទប់
     នឹងដី/វេទិកា នឹងនៅកន្លែង (StaticBody2D មិនផ្លាស់ទី)។ នេះជាឥទ្ធិពល
     ដែលកើតចេញពីការរចនា reparenting — មិនមានកូដពិសេសសម្រាប់វាទេ។
 
@@ -174,13 +176,13 @@ flowchart LR
     A -- "has_method('take_damage')" --> E["egg.gd<br/>ខូចខាត +១"]
     A -- "is_in_group('Arrows')" --> W["វេទិកា/ដី<br/>BaseAudio/GrassAudio"]
     A -- "add_to_group('Arrows')" --> M["main.gd<br/>សម្អាតពេលបញ្ចប់កម្រិត"]
-    E -- "queue_free ព្រួញជាប់<br/>ពេលសុតបែក" --> A
+    E -- "queue_free ព្រួញជាប់<br/>ពេលស៊ុតបែក" --> A
 ```
 
 ផ្លូវខូចខាតមាន **ពីរ** (redundancy ក្នុងកូដពិត)៖
 
 1. **RayCast របស់ព្រួញ** — `arrow.gd` ហៅ `collider.take_damage(self)` (បន្ទាត់ ៧១–៧២)
-2. **Slide collision របស់សុត** — `egg.gd` `_physics_process()` ពិនិត្យ
+2. **Slide collision របស់ស៊ុត** — `egg.gd` `_physics_process()` ពិនិត្យ
    `get_slide_collision()` រក collider ក្នុងក្រុម `"Arrows"` ហើយហៅ `take_damage(collider)`
    (បន្ទាត់ ៥០–៥៦)
 
@@ -214,4 +216,4 @@ flowchart LR
 
 ---
 
-**បន្ទាប់៖** [សុតគោលដៅ និងប្រព័ន្ធខូចខាត →](egg.md)
+**បន្ទាប់៖** [ស៊ុតគោលដៅ និងប្រព័ន្ធខូចខាត →](egg.md)

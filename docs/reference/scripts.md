@@ -15,7 +15,7 @@
 | ឈ្មោះ | ប្រភេទ | លំនាំដើម | បន្ទាត់ | ការពិពណ៌នា |
 | --- | --- | --- | --- | --- |
 | `player` | Node | `$Player` (@onready) | ៥ | យោងទៅតួអង្គក្នុង scene |
-| `egg_scene` | `PackedScene` | — (@export) | ៨ | scene សុត (កំណត់ក្នុង `main.tscn` → `egg.tscn`) |
+| `egg_scene` | `PackedScene` | — (@export) | ៨ | scene ស៊ុត (កំណត់ក្នុង `main.tscn` → `egg.tscn`) |
 | `wooden_base_scene` | `PackedScene` | — (@export) | ១១ | scene វេទិកាឈើ (កំណត់ក្នុង `main.tscn`) |
 | `current_bases` | `Array` | `[]` | ១៤ | វេទិកាសកម្មទាំងអស់ — សម្រាប់សម្អាតពេលបញ្ចប់កម្រិត |
 | `current_level` | `int` | `1` | ១៧ | លេខកម្រិតបច្ចុប្បន្ន |
@@ -26,11 +26,11 @@
 | --- | --- | --- |
 | `_ready() -> void` | ២០–២២ | ហៅ `spawn_new_round()` ម្តងពេលចាប់ផ្តើម |
 | `spawn_new_round() -> void` | ២៥–១២២ | សម្អាតព្រួញ/វេទិកាចាស់ → បង្កើត layout តាមកម្រិត → ដាក់តួអង្គ |
-| `spawn_level_entities(positions: Array[Vector2], use_bases: bool, use_moving: bool) -> void` | ១២៥–១៩០ | instantiate វេទិកា+សុត តាមទីតាំង; ជ្រើសរើសវេទិកាផ្លាស់ទី; កំណត់សុខភាពសុត |
+| `spawn_level_entities(positions: Array[Vector2], use_bases: bool, use_moving: bool) -> void` | ១២៥–១៩០ | instantiate វេទិកា+ស៊ុត តាមទីតាំង; ជ្រើសរើសវេទិកាផ្លាស់ទី; កំណត់សុខភាពស៊ុត |
 | `apply_butter_smooth_movement(node: Node2D, level: int) -> void` | ១៩៣–២១១ | បង្កើត looping Tween (TRANS_SINE, EASE_IN_OUT) ឱ្យវេទិការំកិលឡើង-ចុះ |
-| `_process(_delta: float) -> void` | ២១៤–២៣២ | រាប់សុតសកម្មក្នុងក្រុម `"eggs"` — បើសូន្យ → `current_level += 1` + `spawn_new_round()` |
+| `_process(_delta: float) -> void` | ២១៤–២៣២ | រាប់ស៊ុតសកម្មក្នុងក្រុម `"eggs"` — បើសូន្យ → `current_level += 1` + `spawn_new_round()` |
 
-**ក្រុមដែលប្រើ៖** `"Arrows"` (អាន — សម្អាត), `"eggs"` (អាន+សរសេរ — រាប់/ដាក់សុតចូល)
+**ក្រុមដែលប្រើ៖** `"Arrows"` (អាន — សម្អាត), `"eggs"` (អាន+សរសេរ — រាប់/ដាក់ស៊ុតចូល)
 
 ---
 
@@ -96,7 +96,7 @@
 
 ---
 
-## `Script/egg.gd` — សុតគោលដៅ
+## `Script/egg.gd` — ស៊ុតគោលដៅ
 
 **ប្រភេទ៖** `extends CharacterBody2D` · **ភ្ជាប់នឹង៖** `Scenes/egg.tscn`
 
@@ -108,7 +108,7 @@
 | `max_hits` | `int` | `3` | ៧ | សុខភាពអតិបរមា — ⚠️ **មិនត្រូវបានប្រើ** ក្នុងលក្ខខណ្ឌបំផ្លាញ (bug) |
 | `current_hits` | `int` | `0` | ១០ | ចំនួនព្រួញដែលបានវាយ |
 | `hit_arrows` | `Array` | `[]` | ១៣ | ព្រួញដែលបានវាយរួច (deduplication) |
-| `is_destroyed` | `bool` | `false` | ១៦ | សុតបែកហើយឬទេ |
+| `is_destroyed` | `bool` | `false` | ១៦ | ស៊ុតបែកហើយឬទេ |
 | `custom_gravity` | `float` | `980.0` (ពី ProjectSettings) | ១៩ | ទំនាញ |
 
 ### អនុគមន៍
@@ -121,7 +121,7 @@
 | `take_damage(damager: Node2D) -> void` | ៧១–១០៦ | dedup; `current_hits += 1`; សំឡេង; frame ប្រេះ; ⚠️ លក្ខខណ្ឌបំផ្លាញ hard-coded `>= 3`; លុបព្រួញជាប់; ព្យាយាមហៅ `_on_egg_destroyed()` (guarded — main.gd គ្មាន); `queue_free()` |
 
 **ក្រុមដែលប្រើ៖** `"Arrows"` (អាន — ស្គាល់ព្រួញក្នុង slide collision)។
-សុតចូលក្រុម `"eggs"` ដោយ `main.gd` (មិនមែនដោយ `egg.gd` ខ្លួនឯងទេ)។
+ស៊ុតចូលក្រុម `"eggs"` ដោយ `main.gd` (មិនមែនដោយ `egg.gd` ខ្លួនឯងទេ)។
 
 ---
 

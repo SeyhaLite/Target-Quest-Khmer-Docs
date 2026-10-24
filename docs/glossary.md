@@ -28,7 +28,7 @@
 | ល្បឿន | Speed | តម្លៃស្កាលែនៃល្បឿន (px/s) — `1200×power` | player.gd |
 | វ៉ិចទ័រ | Vector | ទំហំ + ទិស (`Vector2(x, y)`) | គ្រប់ទីកន្លែង |
 | ធ្វើឱ្យមានប្រវែង ១ | Normalize | បំប្លែងវ៉ិចទ័រឱ្យប្រវែង ១ ដោយរក្សាទិស (`.normalized()`) | player.gd, arrow.gd |
-| គន្លងកាំភ្លើង/ព្រួញ | Projectile / trajectory | ផ្លូវកោងរបស់វត្ថុក្រោមទំនាញ | arrow.gd, player.gd |
+| គន្លងវត្ថុបាញ់ (គន្លងព្រួញ) | Projectile / trajectory | ផ្លូវកោងរបស់វត្ថុក្រោមទំនាញ | arrow.gd, player.gd |
 | អាំងតេក្រាលអយលែរ | Euler integration | ការគណនាចលនាតាមជំហាន `v += a·dt; p += v·dt` | arrow.gd |
 | ការប៉ះទង្គិច | Collision | ការបុកគ្នារវាងវត្ថុ | រូបវិទ្យាទាំងអស់ |
 | រស្មីពិនិត្យ | RayCast | បន្ទាត់ត្រង់ស្វែងរកការប៉ះមុនគេ (`RayCast2D`, ១៤៥ px) | arrow.gd |
@@ -44,7 +44,7 @@
 | ច្រក | Lane | តម្លៃ x ថេរដែលគោលដៅអាចនៅ (`[320,520,720,920]`) | main.gd |
 | ច្របល់ | Shuffle | រៀបលំដាប់ដោយចៃដន្យ | main.gd |
 | កំណត់ដែន | Clamp | បង្ខំតម្លៃក្នុងចន្លោះ (`clampi(2+n, 2, 4)`) | main.gd, player.gd |
-| វេទិកាឈើ | Wooden base/platform | StaticBody2D ដែលសុតនៅលើ | wooden_base.tscn |
+| វេទិកាឈើ | Wooden base/platform | StaticBody2D ដែលស៊ុតនៅលើ | wooden_base.tscn |
 | ចលនាបន្តិចម្តងៗ | Tween | animation property តាមពេលវេលា (`TRANS_SINE`) | main.gd |
 
 ## តួអង្គ និងការលេង
@@ -54,7 +54,7 @@
 | តួអង្គ | Player (character) | CharacterBody2D ដែលកាន់ធ្នូ | player.tscn |
 | ធ្នូ | Bow | អាវុធរបស់តួអង្គ | Bow.png, player.tscn |
 | ព្រួញ | Arrow | គ្រាប់ដែលបាញ់ចេញ (Area2D) | arrow.tscn |
-| សុត / ពង | Egg | គោលដៅដែលត្រូវកម្ទេច (CharacterBody2D) | egg.tscn |
+| ស៊ុត | Egg | គោលដៅដែលត្រូវកម្ទេច (CharacterBody2D) — សរសេរ «ស៊ុត» ស្របតាមអក្ខរាវិរុទ្ធខ្មែរ | egg.tscn |
 | គោលដៅ | Target | វត្ថុដែលត្រូវបាញ់ | ទូទៅ |
 | ការទាញ | Drag / charge | ការទាញកណ្តុរដើម្បីផ្ទុកកម្លាំង | player.gd |
 | កម្លាំង | Power (power factor) | ភាគរយកម្លាំងបាញ់ ០.១–១.០ | player.gd |

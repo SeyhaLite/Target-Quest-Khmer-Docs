@@ -20,7 +20,7 @@
 | ភាសាចម្បង | GDScript (Godot Engine) | GitHub API `language: GDScript` + ការអានកូដ |
 | Engine version | Godot **4.3**, GL Compatibility | `project.godot` → `config/features=PackedStringArray("4.3", "GL Compatibility")` |
 | License កូដ | MIT © 2026 KernelVoltage | `LICENSE` (អានពេញ) |
-| License assets | អប់រម/មិនមែនពាណិជ្ជកម្ម — ហាម redistribute | `ASSETS_LICENSE.md` (អានពេញ) |
+| License assets | អប់រំ/មិនមែនពាណិជ្ជកម្ម — ហាម redistribute | `ASSETS_LICENSE.md` (អានពេញ) |
 | ស្ថានភាព maintenance | upstream បង្កើត 2026-10-18, push ចុងក្រោយ 2026-10-19, 2 stars, 0 open issues | GitHub API |
 | Homepage/docs ផ្លូវការ | ❌ គ្មាន (មានតែ README.md) | GitHub API + tree inspection |
 
@@ -54,7 +54,7 @@
 | --- | --- | --- | --- |
 | ១ | វេទិកាផ្លាស់ទី "starting from Level 10" | `use_mov = current_level >= 8` — ចាប់ពីកម្រិត **៨** | `main.gd` បន្ទាត់ ១១៥ |
 | ២ | "Overlap-Free Spatial Grid... strict minimum safe-distance algorithm" | ប្រព័ន្ធ **ច្រកថេរ** (fixed lanes) — x ដាច់ដោយឡែកពី array ៤ តម្លៃ; មិនមាន distance-checking algorithm ទេ | `main.gd` បន្ទាត់ ៩៤–១១២ |
-| ៣ | ដោយនัย: សុខភាពសុតកើនតាមកម្រិត (smart difficulty) | `set_egg_health()` កំណត់ `max_hits` ប៉ុន្តែលក្ខខណ្ឌបំផ្លាញ hard-coded `>= 3` → **សុតបែកនៅព្រួញទី ៣ ជានិច្ច** | `egg.gd` បន្ទាត់ ៩២ — **ផ្ទៀងផ្ទាត់ដោយការដំណើរការ** (មើល ៤.២) |
+| ៣ | ដោយនัย: សុខភាពស៊ុតកើនតាមកម្រិត (smart difficulty) | `set_egg_health()` កំណត់ `max_hits` ប៉ុន្តែលក្ខខណ្ឌបំផ្លាញ hard-coded `>= 3` → **ស៊ុតបែកនៅព្រួញទី ៣ ជានិច្ច** | `egg.gd` បន្ទាត់ ៩២ — **ផ្ទៀងផ្ទាត់ដោយការដំណើរការ** (មើល ៤.២) |
 
 ### ៣.២ Dead code និងឯកសារខូច (ផ្ទៀងផ្ទាត់)
 
@@ -76,8 +76,8 @@
 
 - ព្រួញប្រើ **manual Euler integration** ក្នុង `_process` ជំនួស RigidBody2D —
   សាមញ្ញ និងគ្រប់គ្រងបាន ប៉ុន្តែ frame-rate dependent (delta-based កាត់បន្ថយផលប៉ះពាល់)
-- សុតធ្លាក់តាម `_physics_process` (fixed timestep) ខុសពីព្រួញ — ភាពមិនស៊ីសង្វាក់គ្នាតូចមួយ
-- សុខភាពសុត `2 + level/3` គណនាហើយប៉ុន្តែមិនមានឥទ្ធិពល (bug ៣)
+- ស៊ុតធ្លាក់តាម `_physics_process` (fixed timestep) ខុសពីព្រួញ — ភាពមិនស៊ីសង្វាក់គ្នាតូចមួយ
+- សុខភាពស៊ុត `2 + level/3` គណនាហើយប៉ុន្តែមិនមានឥទ្ធិពល (bug ៣)
 - seed formula `level*4861 + level*239 + 41` = `level*5100 + 41` គណិតវិទ្យា —
   ការប្រើមេគុណពីរអាចជាជម្រើសសោភ័ណ្ឌរបស់អ្នកបង្កើត (មិនមាន comment ពន្យល់)
 - គ្មាន camera, គ្មាន UI/HUD, គ្មាន save — ស្ថានភាពហ្គេម minimal arcade
@@ -95,8 +95,8 @@
 | Import គម្រោង | `--headless --path . --import` | ✅ exit 0, គ្មាន error |
 | Parse check ស្គ្រីបទាំង ៥ | `--headless --check-only --script res://Script/{main,player,arrow,egg,target}.gd` | ✅ ទាំង ៥ exit 0 |
 | ដំណើរការហ្គេម ៣០០ frames | `--headless --path . res://Scenes/main.tscn --quit-after 300` | ✅ exit 0, **គ្មាន error/warning** |
-| ពិនិត្យ bug សុខភាពសុត | test script (SceneTree) — `set_egg_health(5)` + `take_damage()` ×5 | ✅ **បញ្ជាក់ bug៖** `is_destroyed=true` នៅការវាយទី **៣** (កូដដើម) |
-| ពិនិត្យការកែ bug | ដូចខាងលើ ជាមួយ `current_hits >= max_hits` (patch បណ្តោះអាសន្ន → revert) | ✅ សុតបែកនៅការវាយទី **៥** — ការកែដំណើរការ; `git diff` ស្អាតក្រោយ revert |
+| ពិនិត្យ bug សុខភាពស៊ុត | test script (SceneTree) — `set_egg_health(5)` + `take_damage()` ×5 | ✅ **បញ្ជាក់ bug៖** `is_destroyed=true` នៅការវាយទី **៣** (កូដដើម) |
+| ពិនិត្យការកែ bug | ដូចខាងលើ ជាមួយ `current_hits >= max_hits` (patch បណ្តោះអាសន្ន → revert) | ✅ ស៊ុតបែកនៅការវាយទី **៥** — ការកែដំណើរការ; `git diff` ស្អាតក្រោយ revert |
 
 !!! note "ដែនកំណត់នៃការសាកល្បង"
     - មិនបានសាកល្បង **input កណ្តុរ/ការលេង GUI** (headless គ្មាន display) —
@@ -138,7 +138,7 @@
 | ១២ | Godot tutorials (gdscript_basics, 2d_movement, groups, vector_math, physics_introduction, instancing, exporting_for_web, troubleshooting, cutout_animation, audio_buses, 2d_transforms, mouse coords, static_typing) | docs.godotengine.org/en/4.3/... | docs 4.3 | 4.3 | HTTP 200 ទាំងអស់ | ✅ verified |
 | ១៣ | `using_tweens.html` គ្មានក្នុង docs 4.3 | docs.godotengine.org | — | 4.3 | HTTP 404 → **មិនបានយោង** ជំនួសដោយ Tween class ref | ✅ verified (negative) |
 | ១៤ | MIT អនុញ្ញាត fork/modify/redistribute ជាមួយ copyright notice | `LICENSE` (អានពេញ) | 2026 | — | អានអត្ថបទ license | ✅ verified |
-| ១៥ | Assets license: អប់រមប៉ុណ្ណោះ ហាមពាណិជ្ជកម្ម/redistribution | `ASSETS_LICENSE.md` (អានពេញ) | 2026 | — | អានអត្ថបទ | ✅ verified |
+| ១៥ | Assets license: អប់រំប៉ុណ្ណោះ ហាមពាណិជ្ជកម្ម/redistribution | `ASSETS_LICENSE.md` (អានពេញ) | 2026 | — | អានអត្ថបទ | ✅ verified |
 | ១៦ | GitHub rename API (PATCH /repos/{owner}/{repo}) | [GitHub REST docs](https://docs.github.com/en/rest/repos/repos#update-a-repository) | — | — | ការអនុវត្តជោគជ័យ (មើលរបាយការណ៍ចុងក្រោយ) | ✅ verified by execution |
 
 ## ៦. ផែនទីប្រភព → ឯកសារ (Source-to-Documentation Mapping)
@@ -164,14 +164,14 @@
 | ឯកសារក្នុង docs | ប្រភពដើម | License | ការកែប្រួល | គោលបំណក |
 | --- | --- | --- | --- | --- |
 | `docs/assets/icon.png` | `Icon.png` (repo, © KernelVoltage) | MIT (code icon) | បង្រួម 1024→128px (PIL, LANCZOS) | logo/favicon នៃគេហទំព័រឯកសារ |
-| `docs/assets/screenshot-gameplay-1.jpg` | `Image1.png` (repo — រូបថតអេក្រង់ហ្គេមដើម) | © KernelVoltage — ប្រើអប់រមតាមគោលការណ៍ fair use/educational | បង្រួម 1360→1280px, PNG→JPG q82 | បង្ហាញ gameplay ក្នុង index |
+| `docs/assets/screenshot-gameplay-1.jpg` | `Image1.png` (repo — រូបថតអេក្រង់ហ្គេមដើម) | © KernelVoltage — ប្រើអប់រំតាមគោលការណ៍ fair use/educational | បង្រួម 1360→1280px, PNG→JPG q82 | បង្ហាញ gameplay ក្នុង index |
 | `docs/assets/screenshot-gameplay-2.jpg` | `Image2.png` (repo) | ដូចខាងលើ | ដូចខាងលើ | ដូចខាងលើ |
 | Mermaid diagrams (៨) | — បង្កើតដើមដោយអ្នករៀបចំឯកសារ | MIT (ជាផ្នែកនៃ docs) | បង្កើតពីការអានកូដពិត | architecture/flow/sequence |
 
 **គ្មានរូបភាព stock, គ្មាន AI-generated artwork, គ្មាន hotlinking ភាគីទីបី។**
 រូបថតអេក្រង់ទាំងពីរជាទ្រព្យរបស់គម្រោងដើមផ្ទាល់ (មិនមែន asset ក្នុង
 `Free_Asset_Pack` ដែល license ហាម redistribution) — ការប្រើប្រាស់ក្នុងឯកសារ
-អប់រមមិនមែនពាណិជ្ជកម្មស្របតាមស្មារតីនៃ `ASSETS_LICENSE.md`
+អប់រំមិនមែនពាណិជ្ជកម្មស្របតាមស្មារតីនៃ `ASSETS_LICENSE.md`
 (អនុញ្ញាត educational use)។ Attribution រក្សាទុកក្នុង README និងទំព័រនេះ។
 
 ## ៨. សវនកម្មសុវត្ថិភាព (Security Audit)

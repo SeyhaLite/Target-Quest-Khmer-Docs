@@ -11,7 +11,7 @@
 | --- | --- | --- | --- |
 | ០. ការចូលដំណើរការ និងកំណត់អត្តសញ្ញាណ repo | ផ្ទៀងផ្ទាត់ token, ស្វែងរក repo ដើមពិត | ✅ complete | fork `SeyhaLite/Target-Quest` sync 100% ជាមួយ upstream `KernelVoltage/Target-Quest`; URL ក្នុងប្រភពដើម ("Target-QuestRCE") ជា placeholder មិនពិត (404) |
 | ១. សវនកម្ម repository និងស្ថាបត្យកម្ម | អានកូដ ១០០% និងកត់ត្រាការរកឃើញ | ✅ verified | ឯកសារទាំង ៨៧ ក្នុង tree ត្រូវបានពិនិត្យ; រកឃើញភាពមិនស្របគ្នា README↔កូដ ២ កន្លែង, dead code ៣ ឯកសារ; មើល [repository-audit.md](research/repository-audit.md) |
-| ២. License និងយុទ្ធសាស្ត្រ upstream | ពិនិត្យ MIT + assets license; រក្សា fork sync | ✅ verified | MIT (កូដ) + អប់រមប៉ុណ្ណោះ (assets); fork នៅ sync ជាមួយ upstream; យុទ្ធសាស្ត្រ = fork ដដែល + បន្ថែមឯកសារក្នុង `docs/` |
+| ២. License និងយុទ្ធសាស្ត្រ upstream | ពិនិត្យ MIT + assets license; រក្សា fork sync | ✅ verified | MIT (កូដ) + អប់រំប៉ុណ្ណោះ (assets); fork នៅ sync ជាមួយ upstream; យុទ្ធសាស្ត្រ = fork ដដែល + បន្ថែមឯកសារក្នុង `docs/` |
 | ៣. ការស្រាវជ្រាវ និងផ្ទៀងផ្ទាត់ប្រភព | ផ្ទៀងផ្ទាត់ version/URL ទាំងអស់ | ✅ verified | Godot stable 4.7.2 (2026-08-18), គម្រោងប្រើ 4.3; gravity 980 ផ្ទៀងផ្ទាត់ពី ProjectSettings docs; mkdocs-material 9.7.7; RTD config v2; URL ទាំងអស់ពិនិត្យ HTTP 200 |
 | ៤. ស្ថាបត្យកម្មឯកសារ + ពាក្យបច្ចេកទេសខ្មែរ | IA និង glossary | ✅ complete | ១៦ ទំព័រ; [glossary.md](docs/glossary.md) ជាង ៤០ ពាក្យ |
 | ៥. មេរៀនស្នូល + ការដំឡើង | getting-started, fundamentals, architecture | ✅ complete | ៧ ទំព័រ |

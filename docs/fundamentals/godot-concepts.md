@@ -19,12 +19,12 @@
 | `Scenes/main.tscn` | `Node2D` | `main.gd` | កម្រិតទាំងមូល — ផ្ទៃខាងក្រោយ ដី តួអង្គ |
 | `Scenes/player.tscn` | `CharacterBody2D` | `player.gd` | តួអង្គដែលកាន់ធ្នូ |
 | `Scenes/arrow.tscn` | `Area2D` | `arrow.gd` | ព្រួញមួយដើម |
-| `Scenes/egg.tscn` | `CharacterBody2D` | `egg.gd` | សុត (គោលដៅ) |
+| `Scenes/egg.tscn` | `CharacterBody2D` | `egg.gd` | ស៊ុត (គោលដៅ) |
 | `Scenes/wooden_base.tscn` | `StaticBody2D` | — (គ្មាន) | វេទិកាឈើនៅស្ងៀម |
 
 ឧទាហរណ៍ជាក់ស្តែងនៃ **parent-child** ក្នុង `player.tscn`៖
 
-```
+```text
 Player (CharacterBody2D)
 └── Body (Node2D)
     └── Torso (Sprite2D)
@@ -52,8 +52,7 @@ Godot 2D មានប្រភេទ physics body សំខាន់ៗ ហើ�
 | ប្រភេទ | លក្ខណៈ | ប្រើសម្រាប់ | ក្នុងគម្រោង |
 | --- | --- | --- | --- |
 | `StaticBody2D` | មិនផ្លាស់ទី (ដោយរូបវិទ្យា) | ដី ជញ្ជាំង វេទិកា | ដី (`main.tscn`), វេទិកាឈើ |
-
-| `CharacterBody2D` | ផ្លាស់ទីតាមកូដ (`move_and_slide()`) | តួអង្គ វត្ថុដែលធ្លាក់ | តួអង្គ, សុត |
+| `CharacterBody2D` | ផ្លាស់ទីតាមកូដ (`move_and_slide()`) | តួអង្គ វត្ថុដែលធ្លាក់ | តួអង្គ, ស៊ុត |
 | `Area2D` | មិនមានរូបវិទ្យាខ្លួនឯង — រកវត្ថុដែលចូល/ប៉ះ (detect) | របស់ប្រមូល គ្រាប់កាំភ្លើង | ព្រួញ |
 | `RigidBody2D` | រូបវិទ្យាពេញលេញស្វ័យប្រវត្តិ | វត្ថុដែលលោត/រមៀល | **មិនប្រើ** |
 
@@ -65,9 +64,9 @@ Godot 2D មានប្រភេទ physics body សំខាន់ៗ ហើ�
 
 📖 [Physics introduction](https://docs.godotengine.org/en/4.3/tutorials/physics/physics_introduction.html)
 
-## ៣. GDScript និងគន្លឺះ keyword
+## ៣. GDScript និងគន្លឹះ keyword
 
-**GDScript** គឺជាភាសារបស់ Godot — ស្រដៀង Python។ គន្លឺះដែលប្រើក្នុងគម្រោង៖
+**GDScript** គឺជាភាសារបស់ Godot — ស្រដៀង Python។ គន្លឹះដែលប្រើក្នុងគម្រោង៖
 
 ```gdscript
 # extends — ស្គ្រីបនេះពង្រីក (inherit) ពីប្រភេទ node ណាមួយ
@@ -109,7 +108,7 @@ Godot ហៅអនុគមន៍ពិសេសដោយស្វ័យប្�
 | ក្រុម | អ្នកចូលក្រុម | អ្នកប្រើ | គោលបំណង |
 | --- | --- | --- | --- |
 | `"Arrows"` | ព្រួញរាល់ដើម (`arrow.gd` `_ready()`) | `main.gd` សម្អាតពេលចប់កម្រិត; `egg.gd` ពិនិត្យ collision; `arrow.gd` រំលងព្រួញផ្សេង | កំណត់អត្តសញ្ញាណព្រួញ |
-| `"eggs"` | សុតរាល់គ្រាប់ (`main.gd` `spawn_level_entities()`) | `main.gd` `_process()` រាប់សុតនៅសល់ | ដឹងពេលកម្រិតចប់ |
+| `"eggs"` | ស៊ុតរាល់គ្រាប់ (`main.gd` `spawn_level_entities()`) | `main.gd` `_process()` រាប់ស៊ុតនៅសល់ | ដឹងពេលកម្រិតចប់ |
 | `"Player"` | ⚠️ **គ្មាន!** — មិនមាន scene/script ណា `add_to_group("Player")` ទេ | `arrow.gd` ព្យាយាមរក (បន្ទាត់ ២៧) ប៉ុន្តែទទួល `null` | ការពារព្រួញខ្ទប់តួអង្គ — **មិនដំណើរការជាក់ស្តែង** |
 
 !!! bug "ការរកឃើញពីការសវនកម្ម"
@@ -136,7 +135,7 @@ base = wooden_base_scene.instantiate()
 add_child(base)          # ត្រូវតែ add_child មុន ទើប node ដំណើរការ
 
 var egg = egg_scene.instantiate()
-base.add_child(egg)      # សុតក្លាយជាកូនរបស់វេទិកា → ផ្លាស់ទីតាមវេទិកា
+base.add_child(egg)      # ស៊ុតក្លាយជាកូនរបស់វេទិកា → ផ្លាស់ទីតាមវេទិកា
 ```
 
 ```gdscript
@@ -170,7 +169,7 @@ var drag_distance = drag_vector.length()
 
 # main.gd — clamp/clampi កំណត់តម្លៃក្នុងដែនកំណត់
 var target_count = clampi(2 + int(current_level / 4), 2, 4)   # បន្ទាត់ ៩១
-var power_factor = clamp(drag_distance / max_drag_distance, 0.1, 1.0)  # player.gd បន្ទាត់ ៨០
+var power_factor = clamp(drag_distance / max_drag_distance, 0.1, 1.0)  # player.gd បន្ទាត់ ១៦៦
 ```
 
 📖 [Vector math](https://docs.godotengine.org/en/4.3/tutorials/math/vector_math.html) · [2D movement](https://docs.godotengine.org/en/4.3/tutorials/2d/2d_movement.html)
@@ -201,7 +200,7 @@ tween.tween_property(node, "position:y", initial_y, speed)                  # �
 ស្គ្រីបទាំង ៣ អានតម្លៃទំនាញពីទីនេះ៖
 
 ```gdscript
-# arrow.gd បន្ទាត់ ១៣, egg.gd បន្ទាត់ ១៩, player.gd បន្ទាត់ ២៤
+# arrow.gd បន្ទាត់ ១៣, egg.gd បន្ទាត់ ១៩, player.gd បន្ទាត់ ២៥
 var custom_gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 ```
 

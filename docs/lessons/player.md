@@ -94,7 +94,7 @@ func start_charge() -> void:
 កំណត់ `is_stuck = false`។ ការប្រើ `"is_stuck" in current_arrow` គឺជា
 **duck typing** — `player.gd` មិនចាំបាច់ស្គាល់ class របស់ព្រួញទេ។
 
-## ៤. កំឡុងទាញ — `_physics_process()`
+## ៤. អំឡុងទាញ — `_physics_process()`
 
 ```gdscript
 # player.gd បន្ទាត់ ៣៦–១០៥ (ផ្នែក charging សង្ខេប)
@@ -158,7 +158,7 @@ func _physics_process(delta: float) -> void:
 
 ### គណិតវិទ្យានៃការបាញ់
 
-```
+```text
 ទិសដៅ (direction):   aim_dir = -(mouse_pos - drag_start_pos)  normalized
 កម្លាំង (power):       power_factor = clamp(drag_distance / 200, 0.1, 1.0)
 ល្បឿនដំបូង (speed):   final_speed = 1200 × power_factor   → ១២០ ដល់ ១២០០ px/s

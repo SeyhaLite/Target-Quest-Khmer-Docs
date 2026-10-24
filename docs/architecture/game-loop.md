@@ -13,8 +13,8 @@ stateDiagram-v2
     Cleanup --> Generate: បង្កើត layout តាមកម្រិត<br/>(hand-made ១–៤ / procedural ៥+)
     Generate --> PlacePlayer: កំណត់ទីតាំងតួអង្គ (player_pos)
     PlacePlayer --> Playing: អ្នកលេងបាញ់ព្រួញ
-    Playing --> Playing: សុតនៅសល់ (active_egg_count > 0)
-    Playing --> LevelUp: សុតអស់ (active_egg_count == 0)
+    Playing --> Playing: ស៊ុតនៅសល់ (active_egg_count > 0)
+    Playing --> LevelUp: ស៊ុតអស់ (active_egg_count == 0)
     LevelUp --> SpawnRound: current_level += 1
 ```
 
@@ -60,9 +60,9 @@ current_bases.clear()
 
 ### កម្រិតរចនាដោយដៃ (១–៤)
 
-តារាងខាងក្រោយផ្ទៀងផ្ទាត់ពី `main.gd` បន្ទាត់ ៥៣–៧៥៖
+តារាងខាងក្រោមផ្ទៀងផ្ទាត់ពី `main.gd` បន្ទាត់ ៥៣–៧៥៖
 
-| កម្រិត | ទីតាំងតួអង្គ | ទីតាំងសុត | វេទិកាឈើ | គោលបំណងបង្រៀន |
+| កម្រិត | ទីតាំងតួអង្គ | ទីតាំងស៊ុត | វេទិកាឈើ | គោលបំណងបង្រៀន |
 | --- | --- | --- | --- | --- |
 | ១ | (150, 520) — ឆ្វេង | (950, 520) — ស្តាំ នៅលើដី | ❌ | បាញ់ត្រង់ផ្ទៃរាប |
 | ២ | (1100, 520) — ស្តាំ | (150, 520) — ឆ្វេង នៅលើដី | ❌ | បាញ់ត្រឡប់ទិស |
@@ -81,8 +81,8 @@ seed(unique_seed)
 ```
 
 - ទីតាំងតួអង្គ៖ ឆ្វេង (120) ឬ ស្តាំ (1150) ឆ្លាស់គ្នាតាម `current_level % 2`
-- ចំនួនសុត៖ `clampi(2 + level/4, 2, 4)` → កម្រិត ៥–៧ = ៣ សុត, កម្រិត ៨+ = ៤ សុត
-- ទីតាំងសុត៖ "ច្រក" x ៤ `[320, 520, 720, 920]` × កម្ពស់ ៣ `[200, 310, 420]` (shuffle ទាំងពីរ)
+- ចំនួនស៊ុត៖ `clampi(2 + level/4, 2, 4)` → កម្រិត ៥–៧ = ៣ ស៊ុត, កម្រិត ៨+ = ៤ ស៊ុត
+- ទីតាំងស៊ុត៖ "ច្រក" x ៤ `[320, 520, 720, 920]` × កម្ពស់ ៣ `[200, 310, 420]` (shuffle ទាំងពីរ)
 - វេទិកាផ្លាស់ទី៖ ចាប់ពីកម្រិត ៨ (`use_mov = current_level >= 8`)
 
 ## ជំហានទី ៤ — ដាក់តួអង្គ
@@ -93,16 +93,16 @@ if player:
     player.global_position = player_pos   # y = 520 ជានិច្ច
 ```
 
-## ជំហានទី ៥ — ការលេង និងការបំផ្លាញសុត
+## ជំហានទី ៥ — ការលេង និងការបំផ្លាញស៊ុត
 
 អំឡុងពេលលេង `egg.gd` ដឹងពីការបំផ្លាញខ្លួនឯង៖
 
 1. ព្រួញប៉ះ → `take_damage()` → `current_hits += 1` → frame ប្រេះ
 2. `current_hits >= 3` → `is_destroyed = true`
-3. លុបព្រួញទាំងអស់ដែលជាប់ក្នុងសុត (`hit_arrows`)
-4. `queue_free()` — សុតចេញពី scene tree **និង** ពីក្រុម `"eggs"`
+3. លុបព្រួញទាំងអស់ដែលជាប់ក្នុងស៊ុត (`hit_arrows`)
+4. `queue_free()` — ស៊ុតចេញពី scene tree **និង** ពីក្រុម `"eggs"`
 
-## ជំហានទី ៦ — រាប់សុត និងឡើងកម្រិត
+## ជំហានទី ៦ — រាប់ស៊ុត និងឡើងកម្រិត
 
 ```gdscript
 # main.gd បន្ទាត់ ២១៤–២៣២ (polling រាល់ frame)
@@ -120,9 +120,9 @@ func _process(_delta: float) -> void:
 
 !!! warning "ហេតុអ្វី `is_queued_for_deletion()` សំខាន់?"
     `queue_free()` មិនលុប node ភ្លាមៗទេ — វាលុបនៅ **ចុង frame**។
-    បើគ្មានការពិនិត្យនេះ សុតដែល "ស្លាប់ហើយ" នៅតែត្រូវបានរាប់
+    បើគ្មានការពិនិត្យនេះ ស៊ុតដែល "ស្លាប់ហើយ" នៅតែត្រូវបានរាប់
     ក្នុង frame ចុងក្រោយ ហើយកម្រិតមិនបន្ទាប់ភ្លាមទេ។
-    ប៉ុន្តែចំណុចសំខាន់ជាងនេះ៖ frame *បន្ទាប់* សុតចេញពីក្រុមរួចហើយ
+    ប៉ុន្តែចំណុចសំខាន់ជាងនេះ៖ frame *បន្ទាប់* ស៊ុតចេញពីក្រុមរួចហើយ
     ដូច្នេះការរាប់នឹងទៅ ០ យ៉ាងត្រឹមត្រូវ។
 
 ## Timeline ពេញលេញនៃ frame មួយ
@@ -138,7 +138,7 @@ sequenceDiagram
     E->>P: _physics_process(delta) — ទំនាញ + charging + move_and_slide
     E->>G: _physics_process(delta) — ទំនាញ + move_and_slide + slide collisions
     E->>A: _process(delta) — ចលនា + raycast + stick
-    E->>M: _process(delta) — រាប់សុត → បើ 0 ឡើងកម្រិត
+    E->>M: _process(delta) — រាប់ស៊ុត → បើ 0 ឡើងកម្រិត
     Note over E: Physics ticks ដំណើរការមុន process frames<br/>រាល់ frame Godot ហៅ _physics_process (៦០Hz) រួច _process
 ```
 
@@ -148,7 +148,7 @@ sequenceDiagram
     - `arrow.gd` និង `main.gd` ប្រើ `_process` — ព្រួញគណនាចលនាខ្លួនឯង
       (មិនប្រើ physics engine) ហើយ main គ្រាន់តែរាប់ node
     - នេះមានន័យថា **ព្រួញហោះតាម frame rate** (variable delta) ចំណែក
-      **សុតធ្លាក់តាម physics tick** (fixed 60Hz) — ភាពខុសគ្នាដ៏តូចមួយដែល
+      **ស៊ុតធ្លាក់តាម physics tick** (fixed 60Hz) — ភាពខុសគ្នាដ៏តូចមួយដែល
       អ្នកសិក្សាគួរដឹង (មិនមែនជា bug ដែលប៉ះពាល់ការលេងជាក់ស្តែងទេ)។
 
 ## អ្វីដែល *មិនមាន* ក្នុងវដ្តនេះ

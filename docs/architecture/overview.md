@@ -108,7 +108,7 @@ Main (Node2D) — main.gd [main.tscn]
 </details>
 
 !!! note "អ្វីដែលមានតែពេល runtime"
-    - **វេទិកាឈើ និងសុត** — `main.gd` instantiate ពួកវាតាមកម្រិត (`spawn_level_entities()`)
+    - **វេទិកាឈើ និងស៊ុត** — `main.gd` instantiate ពួកវាតាមកម្រិត (`spawn_level_entities()`)
     - **ព្រួញ** — `player.gd` instantiate ពេលចាប់ផ្តើមទាញ (`start_charge()`) ម្តងមួយដើម
     - **ព្រួញដែលខ្ទប់** — reparent ខ្លួនឯងពី `Main` ទៅវត្ថុដែលវាបុក (`stick_arrow()`)
 
@@ -135,8 +135,8 @@ flowchart LR
     E -- "Egg" --> F["egg.gd take_damage()<br/>+1 hit, ប្តូរ frame ប្រេះ"]
     E -- "វេទិកា/ដី" --> G["stick_arrow()<br/>reparent + សំឡេង"]
     F --> H{"hits ≥ 3?"}
-    H -- "បាទ/ចាស" --> I["queue_free សុត<br/>+ លុបព្រួញជាប់ទាំងអស់"]
-    H -- "ទេ" --> J["សុតនៅសល់"]
+    H -- "បាទ/ចាស" --> I["queue_free ស៊ុត<br/>+ លុបព្រួញជាប់ទាំងអស់"]
+    H -- "ទេ" --> J["ស៊ុតនៅសល់"]
     I --> K["main.gd _process()<br/>រាប់ក្រុម 'eggs'"]
     K -- "= 0" --> L["current_level += 1<br/>spawn_new_round()"]
     L --> M["សម្អាតព្រួញ+វេទិកា<br/>បង្កើត layout ថ្មី"]
@@ -149,7 +149,7 @@ flowchart LR
 ស្គ្រីបមិនយោងគ្នាតាម node path ទេ — ពួកវាប្រើ **groups**៖
 
 - `main.gd` សម្អាតព្រួញទាំងអស់តាម `get_nodes_in_group("Arrows")`
-- `main.gd` រាប់សុតតាម `get_nodes_in_group("eggs")`
+- `main.gd` រាប់ស៊ុតតាម `get_nodes_in_group("eggs")`
 - `egg.gd` ស្គាល់ព្រួញតាម `collider.is_in_group("Arrows")`
 
 អត្ថប្រយោជន៍៖ អាចបង្កើត/លុប node ច្រើនដោយសេរី ដោយមិនខូច reference។
@@ -183,7 +183,7 @@ global_transform = global_trans      # ស្តារទីតាំង — ម
 
 ### ៤. Polling ជំនួសឱ្យ event ដើម្បីដឹងកម្រិតចប់
 
-`main.gd` មិនរង់ចាំ signal ពីសុតទេ — វា **រាប់សុតរាល់ frame**៖
+`main.gd` មិនរង់ចាំ signal ពីស៊ុតទេ — វា **រាប់ស៊ុតរាល់ frame**៖
 
 ```gdscript
 # main.gd បន្ទាត់ ២១៤–២៣២
@@ -212,7 +212,7 @@ func _process(_delta: float) -> void:
 | Node | ឯកសារសំឡេង | ស្ថិតនៅ | លេងពេល |
 | --- | --- | --- | --- |
 | `ShootAudio` | `Bow_Shoot.wav` | `player.tscn` | បាញ់ព្រួញ (`release_arrow()`) |
-| `HitAudio` | `Egg_Hit.wav` | `egg.tscn` | សុតត្រូវព្រួញ (`take_damage()`) |
+| `HitAudio` | `Egg_Hit.wav` | `egg.tscn` | ស៊ុតត្រូវព្រួញ (`take_damage()`) |
 | `BaseAudio` | `Base.wav` | `wooden_base.tscn` | ព្រួញខ្ទប់វេទិកាឈើ |
 | `GrassAudio` | `Grass.wav` | `main.tscn` (ដី) | ព្រួញខ្ទប់ដីស្មៅ |
 

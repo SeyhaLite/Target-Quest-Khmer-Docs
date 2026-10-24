@@ -5,37 +5,37 @@
 
 ## ផែនទីថត (Directory Map)
 
-```
+```text
 Target-Quest/
 ├── project.godot          ← ការកំណត់គម្រោង Godot (ឈ្មោះ version វីនដូ renderer)
 ├── README.md              ← ការណែនាំគម្រោងដើម (អង់គ្លេស)
 ├── LICENSE                ← MIT License (កូដ) © 2026 KernelVoltage
-├── ASSETS_LICENSE.md      ← License រូបភាព/សំឡេង (អប់រមប៉ុណ្ណោះ!)
+├── ASSETS_LICENSE.md      ← License រូបភាព/សំឡេង (អប់រំប៉ុណ្ណោះ!)
 ├── Icon.png               ← រូបតំណាងគម្រោង (1024×1024)
 ├── Image1.png, Image2.png ← រូបថតអេក្រង់សម្រាប់ README
 │
 ├── Script/                ← កូដ GDScript ទាំងអស់ (៥ ឯកសារ)
-│   ├── main.gd            ← អ្នកគ្រប់គ្រងកម្រិត — បង្កើត/សម្អាត/រាប់សុត (២៣២ បន្ទាត់)
+│   ├── main.gd            ← អ្នកគ្រប់គ្រងកម្រិត — បង្កើត/សម្អាត/រាប់ស៊ុត (២៣២ បន្ទាត់)
 │   ├── player.gd          ← តួអង្គ — ការទាញធ្នូ បាញ់ គន្លងទាយ (២៤២ បន្ទាត់)
 │   ├── arrow.gd           ← ព្រួញ — ចលនា ការប៉ះ ការខ្ទប់ (១២១ បន្ទាត់)
-│   ├── egg.gd             ← សុត — សុខភាព animation ប្រេះ ការបំផ្លាញ (១០៦ បន្ទាត់)
+│   ├── egg.gd             ← ស៊ុត — សុខភាព animation ប្រេះ ការបំផ្លាញ (១០៦ បន្ទាត់)
 │   └── target.gd          ← ⚠️ មិនប្រើ (dead code — មើលខាងក្រោម)
 │
 ├── Scenes/                ← ឯកសារ scene (.tscn)
 │   ├── main.tscn          ← scene មេ — ផ្ទៃមេឃ/ភ្នំ ដី តួអង្គ
 │   ├── player.tscn        ← តួអង្គ + ធ្នូ + AnimationPlayer (idle/shoot)
 │   ├── arrow.tscn         ← ព្រួញ (Area2D + RayCast2D)
-│   ├── egg.tscn           ← សុត (AnimatedSprite2D ៤ frame ប្រេះ)
+│   ├── egg.tscn           ← ស៊ុត (AnimatedSprite2D ៤ frame ប្រេះ)
 │   ├── wooden_base.tscn   ← វេទិកាឈើ (StaticBody2D)
 │   ├── monster.tscn       ← ⚠️ ខូច (យោងរូបភាពដែលគ្មាន — មើលខាងក្រោម)
 │   └── mai19EC.tmp        ← ⚠️ temp file ដែល Godot editor បន្សល់ទុក
 │
-└── Free_Asset_Pack/       ← រូបភាព និងសំឡេង (license អប់រមប៉ុណ្ណោះ)
+└── Free_Asset_Pack/       ← រូបភាព និងសំឡេង (license អប់រំប៉ុណ្ណោះ)
     ├── Bow.png            ← ធ្នូ
     ├── arrow.png          ← ព្រួញ
     ├── Characters/        ← ផ្នែករាងកាយតួអង្គ (Head, Torso, ដៃ ជើង...) ១២ ឯកសារ
     ├── Environment/       ← ផ្ទៃមេឃ ភ្នំ ដីស្មៅ ដី វេទិកាឈើ ៥ ឯកសារ
-    ├── Props/             ← សុត ៤ ដំណាក់កាលប្រេះ (egg_stage_0..3)
+    ├── Props/             ← ស៊ុត ៤ ដំណាក់កាលប្រេះ (egg_stage_0..3)
     └── SFX/               ← សំឡេង ៤ — Base.wav, Bow_Shoot.wav, Egg_Hit.wav, Grass.wav
 ```
 
@@ -72,7 +72,7 @@ flowchart TD
 | ឯកសារ | ភ្ជាប់ជាមួយ | ទំនាក់ទំនង |
 | --- | --- | --- |
 | `main.gd` | `player.gd` | កំណត់ទីតាំងតួអង្គរាល់កម្រិត (`player.global_position`) |
-| `main.gd` | `egg.gd` | ហៅ `set_egg_health()`; រាប់សុតតាមក្រុម `"eggs"` |
+| `main.gd` | `egg.gd` | ហៅ `set_egg_health()`; រាប់ស៊ុតតាមក្រុម `"eggs"` |
 | `player.gd` | `arrow.gd` | បង្កើត/កាន់/បាញ់ព្រួញ; កំណត់ `direction`, `speed`, `is_stuck` |
 | `arrow.gd` | `egg.gd` | ហៅ `take_damage()` បើ collider មាន method នោះ (duck typing) |
 | `arrow.gd` | វេទិកា/ដី | reparent ខ្លួនឯងទៅ collider; លេងសំឡេងតាម node កូន (`BaseAudio`/`GrassAudio`) |

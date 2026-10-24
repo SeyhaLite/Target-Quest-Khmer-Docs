@@ -70,7 +70,7 @@ Godot មិនត្រូវការការដំឡើង (installer) ទ�
 3. រកឯកសារ **`project.godot`** នៅក្នុង folder គម្រោង ហើយជ្រើសរើសវា
 4. ចុច **Import & Edit**
 
-ពេលបើកលើកដំបូង Godot នឹង import assets (រូបភាព សំឡេង) ដោយស្វ្យប្រវត្តិ —
+ពេលបើកលើកដំបូង Godot នឹង import assets (រូបភាព សំឡេង) ដោយស្វ័យប្រវត្តិ —
 វាបង្កើត folder `.godot/` (cache) ដែលមានក្នុង `.gitignore` រួចហើយ ដូច្នេះកុំ commit វា។
 
 !!! warning "បើមាន warning អំពី version"
@@ -85,7 +85,7 @@ Godot មិនត្រូវការការដំឡើង (installer) ទ�
 - Scene dock បង្ហាញឯកសារក្នុង `Scenes/` (`main.tscn`, `player.tscn`, `arrow.tscn`, `egg.tscn`, `wooden_base.tscn`)
 - FileSystem dock បង្ហាញ `Script/`, `Scenes/`, `Free_Asset_Pack/`
 
-នោះមានន័យថាការដំឡើងជោគជ័យ! 🎉
+នោះមានន័យថាការដំឡើងជោគជ័យ។🎉
 
 ---
 
