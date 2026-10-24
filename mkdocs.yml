@@ -22,7 +22,20 @@ site_url: !ENV [READTHEDOCS_CANONICAL_URL, 'https://target-quest-khmer-docs.read
 
 repo_url: https://github.com/SeyhaLite/Target-Quest-Khmer-Docs
 repo_name: SeyhaLite/Target-Quest-Khmer-Docs
+# ខ្សែភ្ជាប់ "កែសម្រួល" → GitHub web editor (អ្នកអានមិនមានសិទ្ធិ write នឹងត្រូវបាន
+# GitHub ណែនាំឱ្យ fork + បើក Pull Request ដោយស្វ័យប្រវត្តិ)
 edit_uri: edit/main/docs/
+
+# ឯកសារកូដ Python របស់ hook មិនត្រូវចេញលើគេហទំព័រទេ (build-only)
+exclude_docs: |
+  hooks/
+  __pycache__/
+  *.pyc
+
+# Hook បន្ថែមរបារ "ចូលរួមកែលម្អឯកសារ" បែប GitHub នៅចុងទំព័រនីមួយៗ
+# (កែ / មើលប្រភព / រាយការណ៍បញ្ហា / ស្នើឯកសារថ្មី / ប្រវត្តិ commit)
+hooks:
+  - docs/hooks/contribute.py
 
 copyright: >-
   កូដដើមរក្សាសិទ្ធិ © 2026 KernelVoltage (MIT License) —
@@ -62,7 +75,15 @@ theme:
     - search.suggest
     - content.code.copy
     - content.code.annotate
+    # ប៊ូតុងកែសម្រួល/មើលប្រភព នៅជិតចំណងជើងទំព័រ (រូបតំណាងខ្នាតតូច)
+    # ប្រភព: https://squidfunk.github.io/mkdocs-material/setup/setting-up-versioning/#content-action-edit
+    - content.action.edit
+    - content.action.view
     - toc.follow
+  icon:
+    edit: octicons/pencil-16
+    view: octicons/eye-16
+    repo: octicons/mark-github-16
 
 markdown_extensions:
   - admonition
@@ -90,6 +111,16 @@ extra_css:
 
 extra_javascript:
   - javascripts/diagram-viewer.js
+
+# ការកំណត់សម្រាប់ hook `docs/hooks/contribute.py` (របារចូលរួមបែប GitHub)
+# ប្តូរតម្លៃទាំងនេះបានដោយមិនចាំបាច់កែកូដ Python។
+extra:
+  github:
+    enabled: true
+    branch: main
+    docs_dir: docs
+    issue_template: docs-issue.yml   # ឯកសារក្នុង .github/ISSUE_TEMPLATE/
+    issue_label: documentation       # label ដែល GitHub ដាក់ឱ្យស្វ័យប្រវត្តិ
 
 nav:
   - ទំព័រដើម: index.md

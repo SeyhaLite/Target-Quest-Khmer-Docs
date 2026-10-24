@@ -1,0 +1,90 @@
+name: 📖 រាយការណ៍បញ្ហាឯកសារ (Report a documentation issue)
+description: ខុសអក្សរ / link ខូច / ព័ត៌មានចាស់ / ពន្យល់មិនច្បាស់ — ចុចប៊ូតុង "រាយការណ៍បញ្ហា" លើទំព័រ ដើម្បីបំពេញមុន។
+title: "[ឯកសារ] "
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        អរគុណសម្រាប់ការជួយកែលម្អឯកសារភាសាខ្មែរ! 🙏
+
+        💡 **ចង់កែដោយខ្លួនឯងភ្លាមៗ?** ចុចប៊ូតុង **«កែទំព័រនេះ»** នៅចុងទំព័រឯកសារ —
+        GitHub នឹងបើក editor ហើយណែនាំឱ្យ fork + បើក Pull Request ដោយស្វ័យប្រវត្តិ
+        (មិនចាំបាច់ clone ឬដំឡើងអ្វីក្នុងម៉ាស៊ីនទេ)។
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: ប្រភេទបញ្ហា (Type of issue)
+      description: ជ្រើសរើសមួយ — បើច្រើន សូមបើក issue ដាច់ដោយឡែក។
+      multiple: false
+      options:
+        - កំហុសអក្ខរាវិរុទ្ធ / វេយ្យាករណ៍ (typo)
+        - Link ខូច ឬរូបភាពមិនចេញ (broken link / image)
+        - ព័ត៌មានចាស់ ឬខុសពីកូដពិត (outdated / inaccurate)
+        - ពន្យល់មិនច្បាស់ ឬអានមិនយល់ (unclear)
+        - ខ្វះមាតិកាដែលគួរមាន (missing content)
+        - បញ្ហាផ្សេងទៀត (other)
+    validations:
+      required: true
+
+  - type: input
+    id: page
+    attributes:
+      label: URL ទំព័រដែលមានបញ្ហា (Page URL)
+      description: បើអ្នកចុចប៊ូតុង «រាយការណ៍បញ្ហា» ពីលើគេហទំព័រ វានឹងបំពេញឱ្យស្រាប់។
+      placeholder: https://target-quest-khmer-docs.readthedocs.io/lessons/player/
+    validations:
+      required: true
+
+  - type: input
+    id: page_path
+    attributes:
+      label: ឯកសារក្នុង repository (Source file)
+      description: ជួយឱ្យអ្នកថែទាំរកឯកសារបានលឿន។
+      placeholder: docs/lessons/player.md
+    validations:
+      required: false
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: ពិពណ៌នាបញ្ហា (What is wrong?)
+      description: សូមដកស្រង់អត្ថបទដែលខុស ហើយប្រាប់ថាវាខុសត្រង់ណា។
+      placeholder: |
+        ឧទាហរណ៍៖ នៅផ្នែក "រូបវិទ្យាព្រួញ" អត្ថបទថា gravity = 900 ប៉ុន្តែក្នុង
+        `player.gd` បន្ទាត់ ២៣ វាជា 980។
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: ការណែនាំកែលម្អ (Suggested fix) — ស្រេចចិត្ត
+      description: បើអ្នកដឹងចម្លើយ សូមសរសេរអត្ថបទជំនួស ឬកូដត្រឹមត្រូវនៅទីនេះ។
+      placeholder: គួរសរសេរថា ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: ភស្តុតាង / ប្រភពយោង (Evidence) — ស្រេចចិត្ត
+      description: រូបថតអេក្រង់ ឈ្មោះឯកសារ + លេខបន្ទាត់ ឬតំណភ្ជាប់ទៅឯកសារ Godot។
+      placeholder: |
+        - Script/arrow.gd បន្ទាត់ ៤៥
+        - https://docs.godotengine.org/en/stable/...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: ការត្រួតពិនិត្យមុនបើក issue (Pre-flight checks)
+      options:
+        - label: ខ្ញុំបានស្វែងរក issue ដែលមានស្រាប់ហើយ (មិនទាន់មានអ្នករាយការណ៍)
+          required: true
+        - label: ខ្ញុំបានផ្ទៀងផ្ទាត់ជាមួយកូដ/ឯកសារពិត មិនមែនការស្មាន
+          required: true
+        - label: ខ្ញុំបានអានគោលការណ៍សរសេរឯកសារខ្មែរក្នុង CONTRIBUTING.md
+          required: false

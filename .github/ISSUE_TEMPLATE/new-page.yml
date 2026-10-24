@@ -1,0 +1,67 @@
+name: ✨ ស្នើឯកសារ/មេរៀនថ្មី (Propose a new page)
+description: ចង់បានមេរៀនថ្មី ឬផ្នែកពន្យល់បន្ថែម? ស្នើនៅទីនេះមុនពេលសរសេរ។
+title: "[សំណើ] "
+labels: ["documentation", "enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        អរគុណសម្រាប់គំនិតថ្មី! 💡
+
+        បើអ្នកចង់ **សរសេរវាដោយខ្លួនឯង** ចុចប៊ូតុង **«ស្នើឯកសារថ្មី»** នៅចុងទំព័រណាមួយ —
+        GitHub នឹងបង្កើតឯកសារ Markdown ថ្មីក្នុង folder នោះ ហើយណែនាំឱ្យបើក Pull Request។
+
+  - type: input
+    id: title
+    attributes:
+      label: ចំណងជើងទំព័រដែលស្នើ (Proposed page title)
+      placeholder: ឧ. របៀបប្រើ AnimationPlayer ជាមួយព្រួញ
+    validations:
+      required: true
+
+  - type: dropdown
+    id: section
+    attributes:
+      label: ផ្នែកណានៃឯកសារ? (Which section?)
+      description: ស្របតាម `nav` ក្នុង mkdocs.yml
+      multiple: false
+      options:
+        - ចាប់ផ្តើម (getting-started)
+        - មូលដ្ឋានគ្រឹះ (fundamentals)
+        - ស្ថាបត្យកម្ម (architecture)
+        - មេរៀនកូដ (lessons)
+        - អនុវត្តជាក់ស្តែង (tutorials)
+        - ឯកសារយោង (reference)
+        - ផ្សេងទៀត / មិនច្បាស់
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: ហេតុអ្វីវាមានប្រយោជន៍? (Why is it needed?)
+      description: តើអ្នកសិក្សានឹងរៀនអ្វី? តើឯកសារបច្ចុប្បន្នខ្វះអ្វី?
+    validations:
+      required: true
+
+  - type: textarea
+    id: outline
+    attributes:
+      label: គម្រោងមាតិកា (Outline) — ស្រេចចិត្ត
+      description: ចំណុចធំៗដែលទំព័រនេះគួរមាន។
+      placeholder: |
+        1. គោលគំនិត ...
+        2. ឧទាហរណ៍កូដ ...
+        3. លំហាត់អនុវត្ត ...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: តើអ្នកចង់សរសេរវាដោយខ្លួនឯងទេ?
+      options:
+        - label: បាទ/ចាស ខ្ញុំនឹងបើក Pull Request ដោយខ្លួនឯង
+          required: false
+        - label: ខ្ញុំគ្រាន់តែស្នើ — សូមឱ្យអ្នកថែទាំសរសេរ
+          required: false

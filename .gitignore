@@ -29,3 +29,7 @@ site/
 
 # Godot import metadata generated accidentally inside docs/ by headless QA runs
 docs/**/*.import
+
+# Python caches (hooks build artifacts)
+__pycache__/
+*.pyc

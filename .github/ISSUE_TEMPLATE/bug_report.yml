@@ -1,0 +1,54 @@
+name: 🐞 បញ្ហាកូដ/ឯកសារធ្ងន់ធ្ងរ (Bug report)
+description: បើក issue ទូទៅ — សម្រាប់កំហុសដែលមិនមែនជាបញ្ហាឯកសារធម្មតា (build បរាជ័យ, script ខូច)។
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: អ្វីបានកើតឡើង? (What happened?)
+      description: ពិពណ៌នាបញ្ហា និងអ្វីដែលអ្នករំពឹងទុក។
+      placeholder: ឧ. `mkdocs build --strict` បរាជ័យដោយសារ ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: របៀបធ្វើឱ្យកើតឡើងវិញ (Steps to reproduce)
+      placeholder: |
+        1. ...
+        2. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: លទ្ធផល/កំណត់ហេតុ (Logs, screenshots)
+      description: សូមដាក់ក្នុង code block (```)។
+    validations:
+      required: false
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: ផ្នែកដែលប៉ះពាល់ (Area)
+      multiple: true
+      options:
+        - ឯកសារ MkDocs (docs/)
+        - ការដាក់ពង្រាយ Read the Docs
+        - ស្គ្រីបហ្គេម (Script/*.gd)
+        - ស្រ្គីបឆាក (Scenes/*.tscn)
+        - ផ្សេងទៀត
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: កំណែឧបករណ៍ (Versions)
+      description: Godot / Python / MkDocs / Material for MkDocs
+      placeholder: Godot 4.3, Python 3.12, mkdocs 1.6.1, mkdocs-material 9.7.7
+    validations:
+      required: false

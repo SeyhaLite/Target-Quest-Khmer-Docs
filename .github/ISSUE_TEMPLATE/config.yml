@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📚 ឯកសារបណ្ដាញ (Live documentation)
+    url: https://target-quest-khmer-docs.readthedocs.io/
+    about: អានឯកសារភាសាខ្មែរពេញលេញមុនពេលបើក issue — ចម្លើយភាគច្រើនមាននៅទីនេះហើយ។
+  - name: 🎮 គម្រោងដើម (Upstream game by KernelVoltage)
+    url: https://github.com/KernelVoltage/Target-Quest
+    about: បញ្ហាកូដហ្គេមដើម (មិនមែនឯកសារខ្មែរ) គួររាយការណ៍នៅគម្រោងដើម។
